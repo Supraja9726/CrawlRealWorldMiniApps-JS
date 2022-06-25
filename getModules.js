@@ -11,17 +11,12 @@ async function getDirectoryItems(dirpath,extn){
     var jsFileName = "";
     let validFileCounter = 0;
     var MiniAppName = "";
-    var isRecursive = false
 
-    //let outputfileStream = fs.createWriteStream("./results/npmFunctions.json", {flags:'a'});
+    let outputfileStream = fs.createWriteStream("./results/npmFunctions.json", {flags:'a'});
     const errorFileStream = fs.createWriteStream("./errors/errorPackages.json",  {flags:'a'});
         try {
             const dir = await fs.promises.opendir(dirpath)
             for await (const dirNames of dir) {
-
-                if(!isRecursive) {
-                    MiniAppName = dirNames.name
-                }
                 const fileItems = fs.readdirSync(dirpath+dirNames.name)
                 console.log("fileItems:", fileItems)
                 for(let i = 0; i < fileItems.length; i++) {
@@ -50,11 +45,6 @@ async function getDirectoryItems(dirpath,extn){
                                             fileLink,
                                     }));
                                     for (const desc of functionDescriptors) {
-                                        currentAppDir = "./results/"+MiniAppName
-                                        if(!fs.existsSync(currentAppDir)) {
-                                            fs.mkdirSync(currentAppDir)
-                                        }
-                                        let outputfileStream = fs.createWriteStream(currentAppDir, {flags:'a'});
                                         outputfileStream.write(JSON.stringify(desc) + ", \n");
                                     }
                                 }
