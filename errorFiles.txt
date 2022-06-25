@@ -1,0 +1,3 @@
+../WXAPKG-files/_-1289667146_27-wxapkg_dir/subpkgs/pdp/app-service.js
+../WXAPKG-files/_-1289667146_27-wxapkg_dir/subpkgs/pdp/page-frame.js
+../WXAPKG-files/_-154998936_49-wxapkg_dir/res/import/game.js
